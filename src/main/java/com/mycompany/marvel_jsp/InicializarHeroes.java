@@ -1,0 +1,86 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
+package com.mycompany.marvel_jsp;
+
+import DAO.HeroeDAO;
+import entities.Heroes;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author alumno
+ */
+@WebServlet(name = "InicializarHeroes", urlPatterns = {"/InicializarHeroes"})
+public class InicializarHeroes extends HttpServlet {
+
+      @Override
+    public void init() throws ServletException {
+        // Este método se ejecuta al iniciar la aplicación
+        InicializarHeroes();
+    }
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Redirigir al JSP principal
+        response.sendRedirect("index.jsp");
+    }
+
+    private void InicializarHeroes(){
+  HeroeDAO heroeDao = new HeroeDAO(); // Cambiado el nombre de la variable para evitar conflicto
+    
+   
+        // Verificar si ya existen héroes en la base de datos
+      // if (heroeDao.obtenerTodosLosHeroes().isEmpty()) {
+            // Crear lista de héroes iniciales
+            List<Heroes> heroesIniciales = new ArrayList<>();
+            
+            //Spiderman
+            heroesIniciales.add(new Heroes(
+                    null, 
+                    "vecino_amigable", 
+                    "PBP12345", 
+                    "spidey@gmail.com", 
+                    "Spiderman" 
+            ));
+            System.out.println(heroesIniciales.get(0).toString());
+            //Hulk
+            heroesIniciales.add(new Heroes(
+                    null, 
+                    "hombre_verde", 
+                    "vengadormasfuerte", 
+                    "BruceGamma@gmail.com", 
+                    "Hulk"
+            ));
+                     
+            // Guardar todos los héroes
+            for (Heroes heroe : heroesIniciales) {
+                heroeDao.crearHeroe(heroe); // Usando heroeDao en lugar de heroeDAO
+                
+            }
+            
+            
+        }
+
+   //}
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+       // processRequest(request, response);
+    }
+
+    @Override
+    public String getServletInfo() {
+        return "Ingresar los datos de los heroes en la base de datos";
+    }// </editor-fold>
+}

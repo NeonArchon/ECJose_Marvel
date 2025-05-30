@@ -1,9 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-package com.mycompany.marvel_jsp;
-
 import DAO.HeroeDAO;
 import entities.Heroes;
 import java.io.IOException;
@@ -61,11 +55,12 @@ public class InicializarHeroes extends HttpServlet {
                     "BruceGamma@gmail.com", 
                     "Hulk"
             ));
+            System.out.println(heroesIniciales.get(1).toString());
                      
             // Guardar todos los héroes
             for (Heroes heroe : heroesIniciales) {
                 heroeDao.crearHeroe(heroe); // Usando heroeDao en lugar de heroeDAO
-                
+               
             }
             
             

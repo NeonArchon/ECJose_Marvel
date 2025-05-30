@@ -35,6 +35,10 @@ public class HeroeDAO implements IntHeroeDAO{
         }
     }
 
+    public HeroeDAO(SessionFactory sessionFactory) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     @Override
     public void crearHeroe(Heroes Heroe) {
         Session session = hibernateutil.getSessionFactory().openSession();

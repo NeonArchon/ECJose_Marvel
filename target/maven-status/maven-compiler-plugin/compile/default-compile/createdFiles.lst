@@ -1,6 +1,6 @@
 com\mycompany\marvel_jsp\InicializarProductos.class
-com\mycompany\marvel_jsp\InicializarHeroes.class
 com\mycompany\marvel_jsp\resources\JakartaEE8Resource.class
+InicializarHeroes.class
 entities\Imagenes.class
 entities\Productos.class
 DAO\IntProductosDAO.class

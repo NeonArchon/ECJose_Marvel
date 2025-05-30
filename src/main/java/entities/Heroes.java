@@ -6,9 +6,11 @@ package entities;
 
 
 import java.io.Serializable;
-import javax.persistence.*;
+//import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
+
 /**
  *
  * @author alumno
@@ -91,6 +93,16 @@ public class Heroes implements Serializable {
 
     public void setNombreHeroe(String nombreHeroe) {
         this.nombreHeroe = nombreHeroe;
+    }
+     @Override
+    public String toString() {
+        return "Heroe{" +
+               "id=" + id +
+               ", nombreUsuario='" + nombreUsuario + '\'' +
+               ", contrasena='" + contrasena + '\'' +
+               ", email='" + email + '\'' +
+               ", nombreHeroe='" + nombreHeroe + '\'' +
+               '}';
     }
 
     

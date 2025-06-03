@@ -5,11 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.List"%>
-<%@page import="entities.Imagenes"%>
-<%
-    List<Imagenes> imagenes = (List<Imagenes>) request.getAttribute("imagenesSpiderman");
-%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -208,10 +203,11 @@ Fuerza proporcional a la de una araña, trepar muros, agilidad sobrehumana, un "
 
     <div class="first-appearance">
         <h3>Primera aparición</h3>
-        <img src="src/resources/amazing_fantasy_15.jpg" alt="Primera Aparición">
+        <img src="img/amazing_fantasy_15.jpg" alt="Primera Aparición">
         <p><em>Comic</em></p>
     </div>
 </div>
+
 
 <div class="gallery-section">
     <h3>Galería</h3>

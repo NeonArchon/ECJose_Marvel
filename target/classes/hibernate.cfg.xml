@@ -18,7 +18,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 <mapping class="entities.Compras"/>
 <mapping class="entities.Heroes"/>
 <mapping class="entities.Productos"/>
-<mapping class="entities.Productos"/>
+<mapping class="entities.Imagenes"/>
 </session-factory>
 </hibernate-configuration>
 

@@ -20,11 +20,6 @@ public class Imagenes {
     @Column(nullable = false)
     private String url;
     
-    /*
-    @Column(nullable = false)
-    private String tipo; // "perfil", "galeria", "producto", etc.
-    */
-    
     @ManyToOne
     @JoinColumn(name = "heroe_id")
     private Heroes heroe;
@@ -41,7 +36,6 @@ public class Imagenes {
     public Imagenes(Long id, String url,/* String tipo,*/ Heroes heroe, Productos producto) {
         this.id = id;
         this.url = url;
-       // this.tipo = tipo;
         this.heroe = heroe;
         this.producto = producto;  
     }
@@ -62,16 +56,6 @@ public class Imagenes {
         this.url = url;
     }
 
-    /*
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-    */
-
     public Heroes getHeroe() {
         return heroe;
     }
@@ -87,7 +71,5 @@ public class Imagenes {
     public void setProducto(Productos producto) {
         this.producto = producto;
     }
-    
-    
-    
+
 }

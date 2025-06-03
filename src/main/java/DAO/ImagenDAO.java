@@ -82,7 +82,5 @@ public class ImagenDAO implements IntImagenDAO{
         session.close();
     }
     }
-    
-
-    
+     
 }

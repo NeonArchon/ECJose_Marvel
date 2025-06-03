@@ -40,49 +40,44 @@ public class InicializarImagenesSpiderman extends HttpServlet {
     }
 
    private void inicializarImagenes() {
-        try {
+
             // Obtener héroes existentes
             List<Heroes> heroes = heroeDao.obtenerTodosLosHeroes();
             
             if (!heroes.isEmpty()) {
                 // URLs de imágenes de ejemplo (deberías usar tus propias URLs)
                 //MODIFICAR PARA INCLUIR LOS LINKS DEL PROYECTO
-                Map<String, String> imagenesHeroes = Map.of(
-                    "Spiderman", "https://ejemplo.com/spiderman.jpg",
-                    "Spiderman", "https://ejemplo.com/spiderman2.jpg",
-                    "Spiderman", "https://ejemplo.com/spiderman3.jpg",
-                    "Spiderman", "https://ejemplo.com/spiderman4.jpg",
-                    "Spiderman", "https://ejemplo.com/spiderman5.jpg",
-                    "Spiderman", "https://ejemplo.com/spiderman6.jpg",
-                    "Spiderman", "https://ejemplo.com/spiderman7.jpg",
-                    "Spiderman", "https://ejemplo.com/spiderman8.jpg"
-                );
+                    Map<String, List<String>> imagenesHeroes = Map.of(
+                        "Spiderman", List.of(
+                            "src/resources/Imagenes/amazing_fantasy_15.jpg",
+                            "src/resources/Imagenes/spiderman.png",
+                            "src/resources/Imagenes/spiderman_camisa.jpg",
+                            "src/resources/Imagenes/spiderman_juguete_articulado.png",
+                            "src/resources/Imagenes/spiderman_marvel_rivals.png",
+                            "src/resources/Imagenes/spiderman_mcu.png",
+                            "src/resources/Imagenes/spiderman_ps4.jpg",
+                            "src/resources/Imagenes/spiderman_sony.png"
+                        )
+                    );
 
                 // Asignar imágenes a cada héroe
-                for (Heroes heroe : heroes) {
-                    String urlImagen = imagenesHeroes.get(heroe.getNombreHeroe());
-                    if (urlImagen != null) {
-                        Imagenes imagen = new Imagenes(
-                            null, 
-                            urlImagen, 
-                            heroe, 
-                            null
-                        );
-                        imagenDao.crearImagen(imagen);
-                    }
-                }
-                System.out.println("🔥 Imágenes inicializadas correctamente");
-            }
-        } catch (Exception e) {
-            System.err.println("Error al inicializar imágenes:");
-            e.printStackTrace();
+               for (Heroes heroe : heroes) {
+    List<String> urlsImagenes = imagenesHeroes.get(heroe.getNombreHeroe());
+    if (urlsImagenes != null) {
+        for (String urlImagen : urlsImagenes) {
+            Imagenes imagen = new Imagenes(
+                null,
+                urlImagen,
+                heroe,
+                null
+            );
+            imagenDao.crearImagen(imagen);
         }
     }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException {
-        response.sendRedirect("index.jsp");
-    }
-
 }
+            }
+        }
+   }
+
+
+

@@ -221,7 +221,7 @@ Fuerza proporcional a la de una araña, trepar muros, agilidad sobrehumana, un "
         <form id="compraForm" action="ProcesarCompra" method="post">
             <div class="merch-item">
                 <input type="checkbox" name="productos" value="1" id="prod1">
-                <img src="src/resources/spiderman_camisa.jpg" alt="Camisa de Spiderman">
+                <img src="img/spiderman_camisa.jpg" alt="Camisa de Spiderman">
                 <div class="merch-details">
                     <h4>Camisa Spiderman</h4>
                     <p>€24.99</p>
@@ -230,7 +230,7 @@ Fuerza proporcional a la de una araña, trepar muros, agilidad sobrehumana, un "
 
             <div class="merch-item">
                 <input type="checkbox" name="productos" value="2" id="prod2">
-                <img src="src/resources/spiderman_juguete_articulado.png" alt="Figura de Acción de Spiderman">
+                <img src="img/spiderman_juguete_articulado.png" alt="Figura de Acción de Spiderman">
                 <div class="merch-details">
                     <h4>Figura de Acción</h4>
                     <p>$29.99</p>
@@ -239,7 +239,7 @@ Fuerza proporcional a la de una araña, trepar muros, agilidad sobrehumana, un "
 
             <div class="merch-item">
                 <input type="checkbox" name="productos" value="3" id="prod3">
-                <img src="src/resources/spiderman_ps4.jpg" alt="Juego Spiderman PS4">
+                <img src="img/spiderman_ps4.jpg" alt="Juego Spiderman PS4">
                 <div class="merch-details">
                     <h4>Spiderman PS4</h4>
                     <p>$59.99</p>

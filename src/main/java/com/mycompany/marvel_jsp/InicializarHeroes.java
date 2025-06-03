@@ -1,3 +1,5 @@
+package com.mycompany.marvel_jsp;
+
 import DAO.HeroeDAO;
 import entities.Heroes;
 import java.io.IOException;
@@ -29,13 +31,10 @@ public class InicializarHeroes extends HttpServlet {
         response.sendRedirect("index.jsp");
     }
 
-    private void InicializarHeroes(){
+    public void InicializarHeroes(){
   HeroeDAO heroeDao = new HeroeDAO(); // Cambiado el nombre de la variable para evitar conflicto
     
-   
-        // Verificar si ya existen héroes en la base de datos
-      // if (heroeDao.obtenerTodosLosHeroes().isEmpty()) {
-            // Crear lista de héroes iniciales
+
             List<Heroes> heroesIniciales = new ArrayList<>();
             
             //Spiderman
@@ -66,12 +65,26 @@ public class InicializarHeroes extends HttpServlet {
             
         }
 
-   //}
+
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       // processRequest(request, response);
+       String usuario = request.getParameter("nombreUsuario");
+        String email = request.getParameter("email");
+        String contrasena = request.getParameter("contrasena");
+        
+System.out.println("***********************************************");
+        // Aquí haces la validación (esto es solo un ejemplo)
+        if ("vecino_amigable".equals(usuario) && "spidey@gmail.com".equals(email) && "PBP12345".equals(contrasena)) {
+            // Login exitoso, redirige a spiderman.jsp
+            
+            response.sendRedirect("paginaSpiderman.jsp");
+        } else {
+            // Login fallido, vuelve a index.jsp con mensaje de error
+            request.setAttribute("error", "Usuario o contraseña incorrectos");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
     }
 
     @Override

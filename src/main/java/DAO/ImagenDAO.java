@@ -4,7 +4,9 @@
  */
 package DAO;
 
+import entities.Heroes;
 import entities.Imagenes;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.*;
 import org.hibernate.query.Query;
@@ -63,6 +65,22 @@ public class ImagenDAO implements IntImagenDAO{
             return query.getResultList();
         }
         
+    }
+
+    @Override
+    public List<Imagenes> obtenerImagenesPorHeroe(Heroes heroe) {
+        Session session = sessionFactory.openSession();
+    try {
+        Query<Imagenes> query = session.createQuery(
+            "FROM Imagenes WHERE heroe = :heroe", Imagenes.class);
+        query.setParameter("heroe", heroe);
+        return query.list();
+    } catch (Exception e) {
+        System.err.println("Error al obtener imágenes por héroe: " + e.getMessage());
+        return new ArrayList<>();
+    } finally {
+        session.close();
+    }
     }
     
 

@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import entities.Heroes;
 import entities.Imagenes;
 import java.util.List;
 
@@ -20,5 +21,7 @@ public interface IntImagenDAO {
         List<Imagenes> obtenerImagenesPorHeroe(Long heroeId);
         
         List<Imagenes> obtenerImagenesPorProducto(Long productoId);
+        
+            List<Imagenes> obtenerImagenesPorHeroe(Heroes heroe);
     
 }

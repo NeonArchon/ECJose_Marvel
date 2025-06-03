@@ -11,12 +11,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 <property name="connection.url">jdbc:mysql://localhost:3306/MarvelHeroes</property>
 <property name="connection.username">root</property>
 <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
-<property name="show_sql">true</property>ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+<property name="show_sql">true</property>
 <property name="hibernate.format_sql">true</property>
 <property name="hbm2ddl.auto">update</property>
 <!--  Entitites  -->
 <mapping class="entities.Compras"/>
 <mapping class="entities.Heroes"/>
+<mapping class="entities.Productos"/>
 <mapping class="entities.Productos"/>
 </session-factory>
 </hibernate-configuration>

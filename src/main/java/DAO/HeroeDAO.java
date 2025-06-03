@@ -71,5 +71,21 @@ public class HeroeDAO implements IntHeroeDAO{
     }
         
     }
+
+    @Override
+    public Heroes obtenerHeroePorNombre(String nombre) {
+       Session session = sessionFactory.openSession();
+    try {
+        Query<Heroes> query = session.createQuery(
+            "FROM Heroes WHERE nombreHeroe = :nombre", Heroes.class);
+        query.setParameter("nombre", nombre);
+        return query.uniqueResult();  // Devuelve un solo héroe
+    } catch (Exception e) {
+        System.err.println("Error al obtener héroe por nombre: " + e.getMessage());
+        return null;
+    } finally {
+        session.close();
+    }
+    }
         
   }

@@ -4,62 +4,80 @@
  */
 package entities;
 
-import javax.persistence.*;
+import java.io.Serializable;
+//import javax.persistence.*;
 import java.util.Date;
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
 /**
  *
  * @author alumno
  */
 @Entity
 @Table(name = "compras")
-public class Compras {
+public class Compras implements Serializable{
     
     //atributos
- @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @ManyToOne
     @JoinColumn(name = "heroe_id", nullable = false)
     private Heroes heroe;
-    
-    @ManyToOne
-    @JoinColumn(name = "producto_id", nullable = false)
-    private Productos producto;
-    
+
+    @Column(name = "nombre_producto", nullable = false, length = 100)
+    private String nombreProducto;
+
+    @Column(name = "precio_unitario", nullable = false)
+    private Double precioUnitario;
+
     @Column(nullable = false)
     private Integer cantidad;
-    
-    @Column(nullable = false)
+
+   
+    @Column(name = "fecha_compra", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaCompra;
-    
-    @Column(nullable = false)
+    private LocalDateTime fechaCompra;
+
+
+
+    @Column(name = "precio_total", nullable = false)
     private Double precioTotal;
     
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private EstadoCompra estado; // "PENDIENTE", "COMPLETADA", "CANCELADA"
     
     // Constructor vacío
     public Compras() {
-        this.fechaCompra = new Date();
-        this.estado = EstadoCompra.PENDIENTE;
+
     }
     
     // Constructor con campos básicos
-    public Compras(Heroes heroe, Productos producto, Integer cantidad, Double precioTotal) {
-        this();
+        /*
+    public Compras(Heroes heroe, String nombreProducto, Double precioUnitario, int par) {
+        this.id = id;
         this.heroe = heroe;
-        this.producto = producto;
+        this.nombreProducto = nombreProducto;
+        this.precioUnitario = precioUnitario;
         this.cantidad = cantidad;
+        this.fechaCompra = fechaCompra;
         this.precioTotal = precioTotal;
+        actualizarPrecioTotal();
     }
+       */
     
-    // Enum para estado de compra
-    public enum EstadoCompra {
-        PENDIENTE, COMPLETADA, CANCELADA
+    public Compras(Heroes heroe, String nombreProducto, Double precioUnitario, Integer cantidad, LocalDateTime fechaCompra) {
+        this.heroe = heroe;
+        this.nombreProducto = nombreProducto;
+        this.precioUnitario = precioUnitario;
+        this.cantidad = cantidad;
+        this.fechaCompra = fechaCompra;
+        actualizarPrecioTotal();
     }
+
+
+    
+    //getters y setters
 
     public Long getId() {
         return id;
@@ -77,12 +95,21 @@ public class Compras {
         this.heroe = heroe;
     }
 
-    public Productos getProducto() {
-        return producto;
+    public String getNombreProducto() {
+        return nombreProducto;
     }
 
-    public void setProducto(Productos producto) {
-        this.producto = producto;
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+    public Double getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    public void setPrecioUnitario(Double precioUnitario) {
+            this.precioUnitario = precioUnitario;
+    actualizarPrecioTotal();
     }
 
     public Integer getCantidad() {
@@ -91,15 +118,17 @@ public class Compras {
 
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
+    actualizarPrecioTotal();
     }
 
-    public Date getFechaCompra() {
+    public LocalDateTime getFechaCompra() {
         return fechaCompra;
     }
 
-    public void setFechaCompra(Date fechaCompra) {
+    public void setFechaCompra(LocalDateTime fechaCompra) {
         this.fechaCompra = fechaCompra;
     }
+
 
     public Double getPrecioTotal() {
         return precioTotal;
@@ -108,16 +137,11 @@ public class Compras {
     public void setPrecioTotal(Double precioTotal) {
         this.precioTotal = precioTotal;
     }
-
-    public EstadoCompra getEstado() {
-        return estado;
+    
+    private void actualizarPrecioTotal() {
+    if (this.precioUnitario != null && this.cantidad != null) {
+        this.precioTotal = this.precioUnitario * this.cantidad;
     }
-
-    public void setEstado(EstadoCompra estado) {
-        this.estado = estado;
+    
     }
-   
-    
-    
-    
 }

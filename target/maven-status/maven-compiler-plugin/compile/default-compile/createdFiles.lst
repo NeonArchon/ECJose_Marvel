@@ -6,13 +6,13 @@ DAO\ImagenDAO.class
 entities\Imagenes.class
 entities\Productos.class
 DAO\IntProductosDAO.class
+com\mycompany\marvel_jsp\ProcesarCompraServlet.class
 Util\hibernateutil.class
 DAO\ComprasDAO.class
 com\mycompany\marvel_jsp\InicializarImagenesSpiderman.class
 DAO\HeroeDAO.class
 DAO\ProductosDAO.class
 com\mycompany\marvel_jsp\InicializarImagenesHulk.class
-entities\Compras$EstadoCompra.class
 DAO\IntHeroeDAO.class
 com\mycompany\marvel_jsp\JakartaRestConfiguration.class
 DAO\IntImagenDAO.class

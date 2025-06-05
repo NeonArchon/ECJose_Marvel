@@ -87,5 +87,19 @@ public class HeroeDAO implements IntHeroeDAO{
         session.close();
     }
     }
+
+    @Override
+    public Heroes obtenerHeroePorId(Long id) {
+    Session session = sessionFactory.openSession();
+    try {
+        return session.get(Heroes.class, id);  // Busca el héroe por ID
+    } catch (Exception e) {
+        System.err.println("Error al obtener héroe por ID: " + e.getMessage());
+        return null;
+    } finally {
+        session.close();
+    }
         
+    }
+    
   }

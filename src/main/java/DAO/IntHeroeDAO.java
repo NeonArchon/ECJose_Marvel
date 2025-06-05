@@ -18,4 +18,6 @@ public interface IntHeroeDAO {
      public List<Heroes> obtenerTodosLosHeroes();
     
      Heroes obtenerHeroePorNombre(String nombre);
+     
+     public Heroes obtenerHeroePorId(Long id);
 }

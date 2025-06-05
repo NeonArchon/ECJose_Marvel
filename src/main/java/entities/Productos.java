@@ -24,17 +24,10 @@ public class Productos {
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
     
-    @Column(name = "descripcion", length = 500)
-    private String descripcion;
     
     @Column(name = "precio", nullable = false)
     private Double precio;
     
-    @Column(name = "imagen_url", length = 255)
-    private String imagenUrl;
-    
-    @Column(name = "tipo", nullable = false, length = 50)
-    private String tipo; // "camiseta", "taza", "poster", etc.
     
     @OneToMany(mappedBy = "producto")
     private List<Compras> compras; 
@@ -44,26 +37,23 @@ public class Productos {
     }
     
     //constructor con campos
-    public Productos(Long id, String nombre, String descripcion, Double precio, String imagenUrl, String tipo, Heroes HeroeRelacionado, List<Compras> compras) {
+    public Productos(Long id, String nombre, Double precio, List<Compras> compras) {
         this.id = id;
         this.nombre = nombre;
-        this.descripcion = descripcion;
         this.precio = precio;
-        this.imagenUrl = imagenUrl;
-        this.tipo = tipo;
         this.compras = compras;
     }
+
     
     //constructor adicional
-    public Productos(String nombre, String descripcion, Double precio, String tipo) {
+    public Productos(String nombre, Double precio) {
     this.nombre = nombre;
-    this.descripcion = descripcion;
     this.precio = precio;
-    this.tipo = tipo;
     this.compras = new ArrayList<>();
 }
 
     //getters y setters
+
     public Long getId() {
         return id;
     }
@@ -80,14 +70,6 @@ public class Productos {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
     public Double getPrecio() {
         return precio;
     }
@@ -96,23 +78,6 @@ public class Productos {
         this.precio = precio;
     }
 
-    public String getImagenUrl() {
-        return imagenUrl;
-    }
-
-    public void setImagenUrl(String imagenUrl) {
-        this.imagenUrl = imagenUrl;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-
     public List<Compras> getCompras() {
         return compras;
     }
@@ -120,6 +85,5 @@ public class Productos {
     public void setCompras(List<Compras> compras) {
         this.compras = compras;
     }
-
-    
+       
 }

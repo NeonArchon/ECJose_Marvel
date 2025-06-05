@@ -42,7 +42,7 @@ public class ComprasDAO implements IntComprasDAO{
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            session.save(Compra);
+            session.persist(Compra);
             tx.commit();
         } catch (Exception e) {
             if (tx != null) tx.rollback();
@@ -52,5 +52,4 @@ public class ComprasDAO implements IntComprasDAO{
         } 
         
     }
-    
 }

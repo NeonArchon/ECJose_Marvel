@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="entities.Heroes" %>
+<%@ page import="entities.Compras" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -209,46 +212,49 @@ Fuerza proporcional a la de una araña, trepar muros, agilidad sobrehumana, un "
 </div>
 
 
-<div class="gallery-section">
-    <h3>Galería</h3>
-    <c:forEach var="img" items="${imagenesSpiderman}">
-        <img src="${img.url}" alt="Imagen de Spiderman">
-    </c:forEach>
-</div>
+<div class="gallery">
+    <div class="gallery-section">
+        <h3>Galería</h3>
+        <img src="img/spiderman.png" alt="Spiderman 1">
+        <img src="img/spiderman_marvel_rivals.png" alt="Spiderman 2">
+        <img src="img/spiderman_mcu.png" alt="Spiderman 3">
+    </div>
 
     <div class="gallery-section">
         <h3>Mercancía</h3>
-        <form id="compraForm" action="ProcesarCompra" method="post">
-            <div class="merch-item">
-                <input type="checkbox" name="productos" value="1" id="prod1">
-                <img src="img/spiderman_camisa.jpg" alt="Camisa de Spiderman">
-                <div class="merch-details">
-                    <h4>Camisa Spiderman</h4>
-                    <p>€24.99</p>
-                </div>
-            </div>
+        <form id="compraForm" action="ProcesarCompraServlet" method="post">
+            
+            <input type="hidden" name="heroeId" value="1">
 
-            <div class="merch-item">
-                <input type="checkbox" name="productos" value="2" id="prod2">
-                <img src="img/spiderman_juguete_articulado.png" alt="Figura de Acción de Spiderman">
-                <div class="merch-details">
-                    <h4>Figura de Acción</h4>
-                    <p>$29.99</p>
-                </div>
+        <div class="merch-item">
+            <input type="checkbox" name="productos" value="Camisa Spiderman|24.99" id="prod1">
+            <img src="img/spiderman_camisa.jpg" alt="Camisa de Spiderman">
+            <div class="merch-details">
+                <h4>Camisa Spiderman</h4>
+                <p>€24.99</p>
             </div>
+        </div>
 
-            <div class="merch-item">
-                <input type="checkbox" name="productos" value="3" id="prod3">
-                <img src="img/spiderman_ps4.jpg" alt="Juego Spiderman PS4">
-                <div class="merch-details">
-                    <h4>Spiderman PS4</h4>
-                    <p>$59.99</p>
-                </div>
+        <div class="merch-item">
+            <input type="checkbox" name="productos" value="Figura de Acción|29.99" id="prod2">
+            <img src="img/spiderman_juguete_articulado.png" alt="Figura de Acción de Spiderman">
+            <div class="merch-details">
+                <h4>Figura de Acción</h4>
+                <p>€29.99</p>
             </div>
+        </div>
 
-            <button type="submit" class="btn-comprar">Comprar Productos</button>
-        </form>
-    </div>
+        <div class="merch-item">
+            <input type="checkbox" name="productos" value="Spiderman PS4|59.99" id="prod3">
+            <img src="img/spiderman_ps4.jpg" alt="Juego Spiderman PS4">
+            <div class="merch-details">
+                <h4>Spiderman PS4</h4>
+                <p>€59.99</p>
+            </div>
+        </div>
+
+        <button type="submit">Comprar</button>
+    </form>
 </div>
 
 <footer>

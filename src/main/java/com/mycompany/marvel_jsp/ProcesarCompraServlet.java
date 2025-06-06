@@ -43,41 +43,39 @@ public class ProcesarCompraServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String heroeIdStr = request.getParameter("heroeId");
-        if (heroeIdStr == null) {
-
-            request.setAttribute("error", "No se encontró el héroe.");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            return;
-        }
-
-        Long heroeId = Long.parseLong(heroeIdStr);
-        Heroes heroe = heroeDao.obtenerHeroePorId(heroeId);
-
-        String[] productosSeleccionados = request.getParameterValues("productos");
-
-        System.out.println("2***********************************************2");
-        
-        if (productosSeleccionados == null || productosSeleccionados.length == 0) {
-    request.setAttribute("error", "No se han enviado productos para comprar.");
-    request.getRequestDispatcher("paginaSpiderman.jsp").forward(request, response);
-    return;
-        }
-
-        List<Compras> comprasRealizadas = new ArrayList<>();
-
-        for (String productoStr : productosSeleccionados) {
-            String[] partes = productoStr.split("\\|"); // separa nombre y precio
-            String nombre = partes[0];
-            Double precio = Double.parseDouble(partes[1]);
-
-
-            System.out.println(heroe +  nombre + precio);
-            Compras compra = new Compras(heroe, nombre, precio, 1, LocalDateTime.now());
-            comprasDao.insertarCompra(compra);
-            comprasRealizadas.add(compra);
-             request.getRequestDispatcher("paginaSpiderman.jsp").forward(request, response);
-        }
-   
+     String heroeIdStr = request.getParameter("heroeId");
+    if (heroeIdStr == null) {
+        request.setAttribute("error", "No se encontró el héroe.");
+        request.getRequestDispatcher("login.jsp").forward(request, response);
+        return;
     }
+
+    Long heroeId = Long.parseLong(heroeIdStr);
+    Heroes heroe = heroeDao.obtenerHeroePorId(heroeId);
+
+    String[] productosSeleccionados = request.getParameterValues("productos");
+
+    if (productosSeleccionados == null || productosSeleccionados.length == 0) {
+        request.setAttribute("error", "No se han enviado productos para comprar.");
+        request.getRequestDispatcher("paginaSpiderman.jsp").forward(request, response);
+        return;
+    }
+
+    List<Compras> comprasRealizadas = new ArrayList<>();
+
+    for (String productoStr : productosSeleccionados) {
+        String[] partes = productoStr.split("\\|"); // separa nombre y precio
+        String nombre = partes[0];
+        Double precio = Double.parseDouble(partes[1]);
+
+        Compras compra = new Compras(heroe, nombre, precio, 1, LocalDateTime.now());
+        comprasDao.insertarCompra(compra);
+        comprasRealizadas.add(compra);
+    }
+
+ 
+    request.setAttribute("compras", comprasRealizadas);
+    request.setAttribute("mensaje", "¡Compra realizada con éxito!");
+    request.getRequestDispatcher("paginaSpiderman.jsp").forward(request, response);
+}
 }

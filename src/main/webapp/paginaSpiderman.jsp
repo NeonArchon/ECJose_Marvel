@@ -25,13 +25,17 @@
             margin: 0;
             background-color: #ffffff;
             color: #1a1a1a;
+            flex-direction: column;
+            min-height: 100vh; /* Altura mínima de toda la ventana */
         }
 
         .header {
-            background-color: #c8102e; /* Rojo */
+            background: linear-gradient(to bottom, #8a0a1a 0%, #d31632 30%, #6e0818 100%); /* gradiente. El to bottom es pare que sea vertical */
+            /* background-color: #c8102e;  Rojo */
             color: #fff;
-            padding: 30px 0;
+            padding: 40px 0;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .header h1 {
@@ -46,6 +50,7 @@
         }
 
         .content {
+            flex: 1; /* Ocupa todo el espacio disponible */
             display: flex;
             justify-content: space-around;
             padding: 30px;
@@ -56,18 +61,24 @@
         .text-section,
         .powers-section {
             flex: 1;
-            margin: 10px;
+            margin: 20px; /* Aumentar el margen */
             min-width: 280px;
+            background-color: #fff; /* Fondo blanco */
+            padding: 20px; /* Más espacio interno */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil */
         }
 
         textarea {
-            width: 100%;
-            height: 120px;
+            width: 90%;
+            height: 150px; /* Más alto */
             resize: none;
-            border: 2px solid #0057b7; /* Azul */
-            background-color: #f9f9f9;
-            padding: 10px;
+            border: 2px solid #0057b7;
+            background-color: #4bc5ef;
+            padding: 15px; /* Más padding */
             font-size: 1em;
+            border-radius: 8px; /* Bordes redondeados */
+            margin-top: 15px; /* Espacio sobre el textarea */
         }
 
         .first-appearance {
@@ -77,38 +88,117 @@
         }
 
         .first-appearance img {
-            width: 100%;
-            max-width: 150px;
+            width: 200px; 
+            height: 275px;
             border: 2px solid #ccc;
             box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
         }
-
+        
         .gallery {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            background-color: #f0f8ff;
-            padding: 40px 20px;
+            flex-direction: column;
+            align-items: center; /* Centrado horizontal */
+            background: linear-gradient(to bottom, #f0f8ff 0%, #d4e4f5 100%);
+            padding: 50px 20px;
+            width: 100%;
         }
 
         .gallery-section {
-            flex: 1;
-            margin: 20px;
+            width: 100%;
+            max-width: 1200px; /* Ancho máximo para mejor lectura */
             text-align: center;
-            min-width: 300px;
+            margin: 20px 0;
+            
+        }
+        
+        .gallery-images-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .gallery-section h3 {
+            font-size: 2em; /* Título más grande */
+            margin: 0 0 40px 0;
+            color: #c8102e;
+            position: relative;
+            text-align: center;
+            display: inline-block;
+        }
+        
+        .gallery-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #c8102e;
         }
 
         .gallery-section img {
-            width: 80px;
-            height: 120px;
-            margin: 10px;
+            width: 300px; 
+            height: 450px;
+            margin: 15px;
             border: 2px solid #aaa;
             transition: transform 0.3s ease;
         }
 
+        .merch-item {
+            width: 220px; /* Aumentar de 180px */
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px; /* Más padding */
+            background-color: #ffffff;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid #c8102e;
+        }
+        
+        .text-section, 
+        .powers-section {
+            flex: 1;
+            margin: 20px;
+            min-width: 300px; /* Más ancho */
+            background-color: #fff;
+            padding: 30px; /* Más espacio interno */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        textarea {
+            width: 95%;
+            height: 180px; /* Más alto */
+            resize: none;
+            border: 2px solid #0057b7;
+            background-color: #f9f9f9;
+            padding: 20px; /* Más padding */
+            font-size: 1.1em; /* Texto más grande */
+            border-radius: 8px;
+            margin-top: 20px;
+            line-height: 1.6; /* Mejor interlineado */
+        }
+
+        .merch-item img {
+            width: 100%;
+            height: auto;
+            max-height: 200px; /* Aumentar de 140px */
+            object-fit: contain;
+        }
+
         .gallery-section img:hover {
             transform: scale(1.1);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(200,16,46,0.2);
+            border-color: #0057b7;
         }
+        
+        
 
         /* Estilos para productos */
         form {
@@ -119,21 +209,24 @@
         }
 
         .merch-item {
-            width: 180px;
+            width: 220px;
             border: 1px solid #ccc;
             border-radius: 10px;
-            padding: 10px;
+            padding: 15px;
             background-color: #ffffff;
             box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
             text-align: center;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .merch-item img {
-            width: 100%;
-            height: auto;
-            max-height: 140px;
+            width: 180px; /* Ancho fijo */
+            height: 180px;
             object-fit: contain;
+            margin-bottom: 15px;
         }
 
         .merch-details h4 {
@@ -146,29 +239,46 @@
             font-weight: bold;
             color: #c8102e;
         }
+        
+        .merch-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
 
         .btn-comprar {
-            margin-top: 30px;
-            padding: 12px 25px;
-            background-color: #0057b7; /* Azul */
+            padding: 15px 40px; /* Más grande */
+            background: linear-gradient(to bottom, #ff2d2d 0%, #c8102e 100%); /* Gradiente rojo */
             border: none;
             color: white;
-            font-size: 1em;
+            font-size: 1.2em; /* Texto más grande */
             cursor: pointer;
             border-radius: 8px;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            width: auto; /* Ancho según contenido */
+            margin: 30px auto; /* Centrado horizontalmente */
+            display: block; /* Para que funcione el margin auto */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-weight: bold;
+            text-transform: uppercase;
         }
 
         .btn-comprar:hover {
             background-color: #0040a0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         footer {
             margin-top: 40px;
             text-align: center;
-            padding: 15px;
-            background-color: #c8102e;
+            padding: 25px;
+            background: linear-gradient(to bottom, #8a0a1a 0%, #d31632 30%, #6e0818 100%);
             color: #fff;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
         }
 
         footer a {
@@ -180,9 +290,16 @@
         footer a:hover {
             text-decoration: underline;
         }
+        
     </style>
 </head>
 <body>
+    
+<% if (request.getAttribute("mensaje") != null) { %>
+    <script>
+        alert("<%= request.getAttribute("mensaje") %>");
+    </script>
+<% } %>
 
 <div class="header">
     <h1>Spiderman</h1>
@@ -207,7 +324,7 @@ Fuerza proporcional a la de una araña, trepar muros, agilidad sobrehumana, un "
     <div class="first-appearance">
         <h3>Primera aparición</h3>
         <img src="img/amazing_fantasy_15.jpg" alt="Primera Aparición">
-        <p><em>Comic</em></p>
+        <p><em>Amazing Fantasy #15</em></p>
     </div>
 </div>
 
@@ -215,45 +332,54 @@ Fuerza proporcional a la de una araña, trepar muros, agilidad sobrehumana, un "
 <div class="gallery">
     <div class="gallery-section">
         <h3>Galería</h3>
-        <img src="img/spiderman.png" alt="Spiderman 1">
-        <img src="img/spiderman_marvel_rivals.png" alt="Spiderman 2">
-        <img src="img/spiderman_mcu.png" alt="Spiderman 3">
+            <div class="gallery-images-container">
+                <img src="img/spiderman.png" alt="Spiderman 1">
+                <img src="img/spiderman_marvel_rivals.png" alt="Spiderman 2">
+                <img src="img/spiderman_mcu.png" alt="Spiderman 3">
+                    </div>
     </div>
 
     <div class="gallery-section">
         <h3>Mercancía</h3>
+        
         <form id="compraForm" action="ProcesarCompraServlet" method="post">
             
             <input type="hidden" name="heroeId" value="1">
 
+        <div class="merch-container"></div> 
+        
         <div class="merch-item">
-            <input type="checkbox" name="productos" value="Camisa Spiderman|24.99" id="prod1">
-            <img src="img/spiderman_camisa.jpg" alt="Camisa de Spiderman">
-            <div class="merch-details">
-                <h4>Camisa Spiderman</h4>
-                <p>€24.99</p>
+            
+                <input type="checkbox" name="productos" value="Camisa Spiderman|24.99" id="prod1">
+                <img src="img/spiderman_camisa.jpg" alt="Camisa de Spiderman">
+                <div class="merch-details">
+                    <h4>Camisa Spiderman</h4>
+                    <p>€24.99</p>
+                </div>
             </div>
-        </div>
 
-        <div class="merch-item">
-            <input type="checkbox" name="productos" value="Figura de Acción|29.99" id="prod2">
-            <img src="img/spiderman_juguete_articulado.png" alt="Figura de Acción de Spiderman">
-            <div class="merch-details">
-                <h4>Figura de Acción</h4>
-                <p>€29.99</p>
+            <div class="merch-item">
+                <input type="checkbox" name="productos" value="Figura de Acción|29.99" id="prod2">
+                <img src="img/spiderman_juguete_articulado.png" alt="Figura de Acción de Spiderman">
+                <div class="merch-details">
+                    <h4>Figura de Acción</h4>
+                    <p>€29.99</p>
+                </div>
             </div>
-        </div>
 
-        <div class="merch-item">
-            <input type="checkbox" name="productos" value="Spiderman PS4|59.99" id="prod3">
-            <img src="img/spiderman_ps4.jpg" alt="Juego Spiderman PS4">
-            <div class="merch-details">
-                <h4>Spiderman PS4</h4>
-                <p>€59.99</p>
+            <div class="merch-item">
+                <input type="checkbox" name="productos" value="Spiderman PS4|59.99" id="prod3">
+                <img src="img/spiderman_ps4.jpg" alt="Juego Spiderman PS4">
+                <div class="merch-details">
+                    <h4>Spiderman PS4</h4>
+                    <p>€59.99</p>
+                </div>
             </div>
-        </div>
-
-        <button type="submit">Comprar</button>
+        
+        </div>   
+    
+            <button class="btn-comprar" type="submit">Comprar</button>
+        
     </form>
 </div>
 
